@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CreatorHub – by Dark Studios</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-white text-gray-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur border-b bg-white/70">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2 font-bold text-xl">
+        ✨ CreatorHub 
+        <span class="ml-2 bg-gray-200 px-2 py-0.5 rounded-full text-sm">by Dark Studios</span>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#features" class="text-gray-600 hover:text-black">Features</a>
+        <a href="#rooms" class="text-gray-600 hover:text-black">Rooms</a>
+        <a href="#waitlist" class="px-4 py-2 bg-black text-white rounded-2xl">Sign In</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden text-2xl">☰</button>
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-menu" 
+         class="max-h-0 overflow-hidden opacity-0 md:hidden flex flex-col px-4 pb-4 gap-3 bg-white border-t transition-all duration-300 ease-in-out">
+      <a href="#features" class="text-gray-600 hover:text-black">Features</a>
+      <a href="#rooms" class="text-gray-600 hover:text-black">Rooms</a>
+      <a href="#waitlist" class="px-4 py-2 bg-black text-white rounded-2xl w-fit">Sign In</a>
+    </div>
+  </header>
+
+<script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  function toggleMenu(forceClose = false) {
+    const isOpen = mobileMenu.classList.contains("max-h-40");
+
+    if (isOpen || forceClose) {
+      // closing
+      mobileMenu.classList.remove("max-h-40", "opacity-100");
+      mobileMenu.classList.add("max-h-0", "opacity-0");
+      menuBtn.textContent = "☰";
+    } else {
+      // opening
+      mobileMenu.classList.remove("max-h-0", "opacity-0");
+      mobileMenu.classList.add("max-h-40", "opacity-100");
+      menuBtn.textContent = "✖";
+    }
+  }
+
+  // Toggle on button click
+  menuBtn.addEventListener("click", () => toggleMenu());
+
+  // Auto-close when a link is clicked
+  document.querySelectorAll("#mobile-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      toggleMenu(true); // force close
+    });
+  });
+</script>
+
+  <!-- Hero -->
+  <section class="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-8 items-center">
+    <div>
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+        Where <span class="bg-black text-white px-2 rounded"> Creators.</span> hang, hire, and collab.
+      </h1>
+      <p class="mt-4 text-lg text-gray-600">
+        A focused space for creators to meet editors, writers, and other YouTubers. Built to turn chats into collabs fast.
+      </p>
+      <div class="mt-6 flex gap-3">
+        <a href="#waitlist" class="px-5 py-3 bg-black text-white rounded-2xl">Get Early Access →</a>
+        <a href="#rooms" class="px-5 py-3 border rounded-2xl">Explore Rooms</a>
+      </div>
+      <div class="mt-4 text-sm text-gray-500">Invite-only beta • 100 spots this month</div>
+    </div>
+
+    <!-- Live Rooms -->
+    <div id="rooms" class="bg-white shadow-xl rounded-2xl p-5">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">📻 Live Rooms (Now)</h2>
+      <div class="space-y-3">
+        <div class="flex justify-between border rounded-2xl p-3">
+          <div>
+            <div class="font-semibold">Minecraft Story Jam</div>
+            <div class="text-sm text-gray-500">Host: AaravPlays • 58 listening</div>
+            <div class="mt-1 text-xs">#Minecraft #Story #Collab</div>
+          </div>
+          <button class="px-3 py-1 bg-gray-200 rounded-2xl">Join</button>
+        </div>
+        <div class="flex justify-between border rounded-2xl p-3">
+          <div>
+            <div class="font-semibold">BGMI Scrims + Shorts Ideas</div>
+            <div class="text-sm text-gray-500">Host: KritikaOP • 41 listening</div>
+            <div class="mt-1 text-xs">#BGMI #Shorts #Clips</div>
+          </div>
+          <button class="px-3 py-1 bg-gray-200 rounded-2xl">Join</button>
+        </div>
+        <div class="flex justify-between border rounded-2xl p-3">
+          <div>
+            <div class="font-semibold">Horror Lore Writers Meet</div>
+            <div class="text-sm text-gray-500">Host: DarkStudios • 23 listening</div>
+            <div class="mt-1 text-xs">#Horror #Writers #Sound</div>
+          </div>
+          <button class="px-3 py-1 bg-gray-200 rounded-2xl">Join</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="max-w-6xl mx-auto px-4 pb-10 grid md:grid-cols-3 gap-4">
+    <div class="border rounded-2xl p-4">
+      <h3 class="font-semibold mb-1">👥 Creator Circles</h3>
+      <p class="text-sm text-gray-600">Private rooms to find editors, writers, thumbnail artists, and collab partners.</p>
+    </div>
+    <div class="border rounded-2xl p-4">
+      <h3 class="font-semibold mb-1">💬 Pitch Boards</h3>
+      <p class="text-sm text-gray-600">Post story ideas or services. Swipe-style accept/shortlist flow for quick deals.</p>
+    </div>
+    <div class="border rounded-2xl p-4">
+      <h3 class="font-semibold mb-1">📻 Live Hangouts</h3>
+      <p class="text-sm text-gray-600">Audio rooms for spontaneous brainstorming and co-working with fans or creators.</p>
+    </div>
+  </section>
+
+  <!-- Waitlist Form -->
+  <section id="waitlist" class="max-w-6xl mx-auto px-4 pb-20">
+    <div class="border rounded-2xl p-6">
+      <h2 class="text-xl font-semibold mb-4">Join the beta waitlist</h2>
+      <form id="waitlistForm" class="grid gap-3">
+        <input class="border rounded p-2" name="name" placeholder="Creator / Channel name" required />
+        <input class="border rounded p-2" type="email" name="email" placeholder="Email" required />
+        <input class="border rounded p-2" name="niche" placeholder="Primary niche (e.g., Minecraft, BGMI)" />
+        <textarea class="border rounded p-2" name="message" placeholder="What do you want from CreatorHub?"></textarea>
+        <button type="submit" class="px-4 py-2 bg-black text-white rounded-2xl">Request Invite</button>
+      </form>
+
+      <p id="formStatus" class="text-sm mt-2 text-gray-500"></p>
+
+      <script>
+        const form = document.getElementById("waitlistForm");
+        const status = document.getElementById("formStatus");
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          status.textContent = "⏳ Sending...";
+
+          const formData = new FormData(form);
+          const object = Object.fromEntries(formData.entries());
+
+          try {
+            const response = await fetch("https://formspree.io/f/mdkllwwn", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(object),
+            });
+
+            if (response.ok) {
+              status.textContent = "✅ Thanks! You're on the waitlist.";
+              form.reset();
+            } else {
+              status.textContent = "❌ Oops, something went wrong. Try again.";
+            }
+          } catch (error) {
+            status.textContent = "⚠️ Network error. Please try later.";
+          }
+        });
+      </script>
+
+      <div class="text-xs text-gray-500 mt-2">
+        By joining, you agree to our community rules. No spam. No harassment. Be kind.
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t py-8 text-center text-sm text-gray-500">
+    © 2025 Dark Studios • CreatorHub
+  </footer>
+</body>
+</html>
